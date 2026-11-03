@@ -56,6 +56,20 @@ export interface BrandConfig {
     whatsapp?: string;
     email?: string;
   };
+  
+  // Esteemed Customers / Client Logos
+  esteemedCustomers: {
+    name: string;
+    logoUrl: string;
+    website?: string;
+  }[];
+  
+  // Industrial & Manufacturing Clients
+  industrialCustomers: {
+    name: string;
+    logoUrl: string;
+    website?: string;
+  }[];
 }
 
 export const BRAND_PLACEHOLDERS = {
@@ -80,7 +94,7 @@ export const brandConfig: BrandConfig = {
   // Company Brand Identity
   companyName: 'CoalLuxe Industrial Charcoal',
   companyShortName: 'CoalLuxe',
-  legalEntity: '[COMPANY_NAME] Global Charcoal Manufacturing & Export Ltd.',
+  legalEntity: 'COALLUXE Global Charcoal Manufacturing & Export Ltd.',
   tagline: 'The Essence of Fire',
   
   heroHeadline: 'Premium Charcoal, Made from Carefully Selected Wood',
@@ -89,12 +103,12 @@ export const brandConfig: BrandConfig = {
   description: 'Direct manufacturer and bulk supplier of high-quality wood charcoal, lumpwood, and briquettes. Consistent quality, reliable supply, and delivery across India for commercial and industrial requirements.',
 
   // Contact Details
-  address: '[COMPANY_ADDRESS] (Demo: Industrial Logistics Park)',
+  address: '222, SR Compound Lasudia Mori, Devas Naka, Indore, Madhya Pradesh, 452010',
   city: 'Industrial Logistics Hub',
   country: 'India',
-  email: 'sales@[COMPANY_DOMAIN].com (Demo: inquiries@coalluxe-demo.com)',
-  phone: '+91 [COMPANY_PHONE]',
-  whatsappNumber: '+910000000000', // Set to real WhatsApp number when supplied
+  email: 'sales@coalluxe.com',
+  phone: '+91 8767096694',
+  whatsappNumber: '+918767096694',
   whatsappMessage: 'Hello, I am interested in bulk commercial quotation for charcoal supply across India.',
 
   logoText: 'COALLUXE',
@@ -160,10 +174,10 @@ export const brandConfig: BrandConfig = {
   formEndpoint: undefined,
 
   // Extended convenience aliases
-  companyAddress: '[COMPANY_ADDRESS] (Demo: Industrial Area, Logistics Hub, India)',
-  factoryAddress: '[FACTORY_ADDRESS] (Demo: Kiln Unit, Industrial Corridor, India)',
-  companyPhone: '+91 [COMPANY_PHONE]',
-  companyEmail: 'sales@[COMPANY_DOMAIN].com (Demo: inquiries@coalluxe-demo.com)',
+  companyAddress: '222, SR Compound Lasudia Mori, Devas Naka, Indore, Madhya Pradesh, 452010',
+  factoryAddress: 'Gram Narangi, Khunajhir Khurd, Dist-Chhindwara, Madhya Pradesh, 480001',
+  companyPhone: '+91 8767096694',
+  companyEmail: 'sales@coalluxe.com',
   exportMarkets: [
     { region: 'Northern India', countries: 'Delhi NCR, Punjab, Haryana, Uttar Pradesh, Rajasthan, Uttarakhand' },
     { region: 'Western India', countries: 'Maharashtra (Mumbai, Pune), Gujarat (Ahmedabad, Surat), Goa' },
@@ -173,9 +187,35 @@ export const brandConfig: BrandConfig = {
 
   socialLinks: {
     linkedin: 'https://linkedin.com/company/coalluxe-charcoal',
-    whatsapp: 'https://wa.me/10000000000',
-    email: 'mailto:inquiries@coalluxe-demo.com'
-  }
+    whatsapp: 'https://wa.me/918767096694',
+    email: 'mailto:sales@coalluxe.com'
+  },
+
+  // Esteemed Customers - Premium Hotel Chains
+  esteemedCustomers: [
+    { name: 'Radisson Blu', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+    { name: 'Marriott Hotel', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+    { name: 'Sayaji Hotel', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+    { name: 'EFFOTEL Hotel', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+    { name: 'Enrise by Sayaji', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+    { name: 'Ramada Hotel', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+    { name: 'Wow by Selections Hotel', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+    { name: 'Ginger Hotel', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+    { name: 'Pista House', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+    { name: 'Sheraton Grand Palace', logoUrl: '/images/customers/hotel-chain.svg', website: '#' },
+  ],
+
+  // Industrial & Manufacturing Clients (Using elegant text display)
+  industrialCustomers: [
+    { name: 'Agricultural Processing', logoUrl: '/images/customers/industrial.svg', website: '#' },
+    { name: 'Food Manufacturing', logoUrl: '/images/customers/industrial.svg', website: '#' },
+    { name: 'Textile Industry', logoUrl: '/images/customers/industrial.svg', website: '#' },
+    { name: 'Chemical Processing', logoUrl: '/images/customers/industrial.svg', website: '#' },
+    { name: 'Biofuel Production', logoUrl: '/images/customers/industrial.svg', website: '#' },
+    { name: 'Metal Processing', logoUrl: '/images/customers/industrial.svg', website: '#' },
+    { name: 'Pharmaceutical', logoUrl: '/images/customers/industrial.svg', website: '#' },
+    { name: 'Packaging Industry', logoUrl: '/images/customers/industrial.svg', website: '#' },
+  ]
 };
 
 export const BRAND_CONFIG = brandConfig;

@@ -1,9 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import Breadcrumbs from '../components/Breadcrumbs';
 import { GALLERY_DATA, GALLERY_CATEGORIES } from '../data/galleryData';
 import { Lightbox } from '../components/Lightbox';
-import { Maximize2, Camera, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Maximize2 } from 'lucide-react';
 
 export const GalleryPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -18,30 +16,6 @@ export const GalleryPage: React.FC = () => {
 
   return (
     <div className="gallery-page">
-      {/* Page Header */}
-      <section style={{ 
-        backgroundColor: 'var(--color-carbon-900)', 
-        borderBottom: '1px solid var(--color-carbon-700)',
-        padding: '3rem 0 2.5rem' 
-      }}>
-        <div className="container">
-          <Breadcrumbs items={[{ label: 'Facility & Product Media Gallery' }]} />
-
-          <div style={{ maxWidth: '850px', marginTop: '1.25rem' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-              <span className="badge badge-accent">Production & Product Visuals</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--color-gray-400)' }}>• High-Resolution Documentation</span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', marginBottom: '1rem', lineHeight: 1.2 }}>
-              Manufacturing Facilities, Lab Testing & Export Operations
-            </h1>
-            <p style={{ fontSize: '1.1rem', color: 'var(--color-gray-300)', lineHeight: 1.6 }}>
-              Visual documentation of our brick dome kilns, automated vibratory grading lines, proximate analysis testing laboratory, palletized master cartons, and maritime container stuffing.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Gallery Filter & Grid Section */}
       <section style={{ padding: '3.5rem 0 5rem', backgroundColor: 'var(--color-carbon-950)' }}>
         <div className="container">
@@ -153,35 +127,6 @@ export const GalleryPage: React.FC = () => {
           </div>
 
           {/* Client Replacement Note Banner */}
-          <div style={{
-            backgroundColor: 'var(--color-carbon-900)',
-            border: '1px solid var(--color-carbon-700)',
-            borderRadius: 'var(--radius-md)',
-            padding: '2rem',
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: '1.5rem'
-          }}>
-            <div style={{ maxWidth: '650px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
-                <Camera size={18} style={{ color: 'var(--color-accent)' }} />
-                <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 700 }}>
-                  Client Media Integration
-                </span>
-              </div>
-              <h3 style={{ fontSize: '1.25rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>
-                Factory Audit & High-Resolution Asset Library
-              </h3>
-              <p style={{ color: 'var(--color-gray-400)', fontSize: '0.875rem', lineHeight: 1.5, margin: 0 }}>
-                All media displayed demonstrates our real production assets. If you require video clips of kiln operations, screening runs, or live container stuffing prior to placing an order, our export coordinator can supply them via WhatsApp or secure cloud link.
-              </p>
-            </div>
-            <Link to="/request-quote" className="btn btn-primary">
-              Request Facility Tour / Quote <ArrowRight size={16} />
-            </Link>
-          </div>
         </div>
       </section>
 

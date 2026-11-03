@@ -1,45 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Breadcrumbs from '../components/Breadcrumbs';
 import { MANUFACTURING_STEPS } from '../data/manufacturingSteps';
 import { 
   Flame, 
   ShieldCheck, 
-  ThermometerSnowflake, 
-  TreeDeciduous, 
-  ArrowRight, 
   Clock, 
-  CheckCircle2, 
   Factory
 } from 'lucide-react';
 
 export const ManufacturingPage: React.FC = () => {
   return (
     <div className="manufacturing-page">
-      {/* Page Header */}
-      <section style={{ 
-        backgroundColor: 'var(--color-carbon-900)', 
-        borderBottom: '1px solid var(--color-carbon-700)',
-        padding: '3rem 0 2.5rem' 
-      }}>
-        <div className="container">
-          <Breadcrumbs items={[{ label: 'Manufacturing Capabilities' }]} />
-
-          <div style={{ maxWidth: '850px', marginTop: '1.25rem' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-              <span className="badge badge-accent">Industrial Kiln Pyrolysis</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--color-gray-400)' }}>• FSC® Wood Concessions</span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', marginBottom: '1rem', lineHeight: 1.2 }}>
-              Precision Carbonization & Kiln Infrastructure
-            </h1>
-            <p style={{ fontSize: '1.1rem', color: 'var(--color-gray-300)', lineHeight: 1.6 }}>
-              Our manufacturing methodology blends centuries-old thermal mastery with modern laboratory quality control. From slow 22-day brick dome kiln firings to automated de-dusting screening lines, every ton is engineered for high caloric density, low ash, and zero maritime self-heating risk.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Industrial Facilities Overview Metrics */}
       <section style={{ 
         backgroundColor: 'var(--color-carbon-850)', 
@@ -136,27 +106,9 @@ export const ManufacturingPage: React.FC = () => {
                       {step.shortDesc}
                     </p>
 
-                    <p style={{ color: 'var(--color-gray-300)', lineHeight: 1.7, fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+                    <p style={{ color: 'var(--color-gray-300)', lineHeight: 1.7, fontSize: '0.95rem' }}>
                       {step.detailedDesc}
                     </p>
-
-                    <div style={{
-                      backgroundColor: 'var(--color-carbon-800)',
-                      border: '1px solid var(--color-carbon-700)',
-                      borderRadius: 'var(--radius-sm)',
-                      padding: '0.75rem 1rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem'
-                    }}>
-                      <CheckCircle2 size={18} style={{ color: 'var(--color-success)', flexShrink: 0 }} />
-                      <div style={{ fontSize: '0.85rem' }}>
-                        <span style={{ color: 'var(--color-gray-400)', display: 'block', fontSize: '0.75rem', textTransform: 'uppercase' }}>
-                          Quality Verification Standard
-                        </span>
-                        <strong style={{ color: '#FFFFFF' }}>{step.qualityStandard}</strong>
-                      </div>
-                    </div>
                   </div>
 
                   {/* Image showcase */}
@@ -182,80 +134,6 @@ export const ManufacturingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Sustainable Forestry & Emission Control */}
-      <section style={{ padding: '4.5rem 0', backgroundColor: 'var(--color-carbon-900)', borderTop: '1px solid var(--color-carbon-700)' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
-            <div>
-              <span className="badge badge-accent" style={{ marginBottom: '0.75rem' }}>Environmental Stewardship</span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)', color: '#FFFFFF', marginBottom: '1rem' }}>
-                Responsible Sourcing & Zero Deforestation Policy
-              </h2>
-              <p style={{ color: 'var(--color-gray-300)', lineHeight: 1.7, marginBottom: '1.25rem' }}>
-                We believe premium charcoal export must coexist with sustainable resource management. We never purchase timber from unauthorized logging or protected conservation reserves.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2rem' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                  <TreeDeciduous size={20} style={{ color: 'var(--color-accent)', flexShrink: 0, marginTop: '2px' }} />
-                  <div>
-                    <strong style={{ color: '#FFFFFF', display: 'block', fontSize: '0.95rem' }}>FSC® Chain-of-Custody Compliant</strong>
-                    <span style={{ color: 'var(--color-gray-400)', fontSize: '0.875rem' }}>Documented timber provenance and legal cutting permits for all incoming raw hardwood.</span>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                  <ThermometerSnowflake size={20} style={{ color: 'var(--color-accent)', flexShrink: 0, marginTop: '2px' }} />
-                  <div>
-                    <strong style={{ color: '#FFFFFF', display: 'block', fontSize: '0.95rem' }}>Smoke Condensation & Bio-Oil Recovery</strong>
-                    <span style={{ color: 'var(--color-gray-400)', fontSize: '0.875rem' }}>Kiln chimneys incorporate condensation capture pipes that harvest wood vinegar for agriculture, reducing atmospheric particulate emissions.</span>
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <Link to="/quality" className="btn btn-primary">
-                  Review Quality Standards <ArrowRight size={16} />
-                </Link>
-                <Link to="/request-quote" className="btn btn-secondary">
-                  Discuss Factory Supply
-                </Link>
-              </div>
-            </div>
-
-            <div style={{
-              backgroundColor: 'var(--color-carbon-800)',
-              border: '1px solid var(--color-carbon-700)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '2rem'
-            }}>
-              <h3 style={{ fontSize: '1.25rem', color: '#FFFFFF', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Factory size={20} style={{ color: 'var(--color-accent)' }} /> Production Capacity Summary
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.9rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.75rem', borderBottom: '1px solid var(--color-carbon-700)' }}>
-                  <span style={{ color: 'var(--color-gray-400)' }}>Hardwood Lump Charcoal:</span>
-                  <strong style={{ color: '#FFFFFF' }}>450 MT / Month</strong>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.75rem', borderBottom: '1px solid var(--color-carbon-700)' }}>
-                  <span style={{ color: 'var(--color-gray-400)' }}>Extruded Sawdust Briquettes:</span>
-                  <strong style={{ color: '#FFFFFF' }}>350 MT / Month</strong>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.75rem', borderBottom: '1px solid var(--color-carbon-700)' }}>
-                  <span style={{ color: 'var(--color-gray-400)' }}>Coconut Shell Shisha Cubes:</span>
-                  <strong style={{ color: '#FFFFFF' }}>150 MT / Month</strong>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.75rem', borderBottom: '1px solid var(--color-carbon-700)' }}>
-                  <span style={{ color: 'var(--color-gray-400)' }}>White Charcoal (Binchotan):</span>
-                  <strong style={{ color: '#FFFFFF' }}>60 MT / Month (Allocation)</strong>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--color-gray-400)' }}>Total Monthly Export Capacity:</span>
-                  <strong style={{ color: 'var(--color-accent)', fontWeight: 800 }}>Approx. 1,000+ Metric Tons</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

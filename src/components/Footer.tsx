@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { brandConfig } from '../config/brandConfig';
 import { 
-
   Mail, 
   Phone, 
   MapPin, 
-  ShieldCheck, 
-  CheckCircle2,
   Clock,
   ArrowRight
 } from 'lucide-react';
@@ -15,6 +12,14 @@ import { PRODUCTS_DATA } from '../data/productsData';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+
+  const handleNavClick = (e: React.MouseEvent, path: string) => {
+    if (location.pathname === path) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <footer 
@@ -53,16 +58,7 @@ export const Footer: React.FC = () => {
               {brandConfig.description}
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.8rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-gray-300)' }}>
-                <ShieldCheck size={16} color="var(--color-accent)" />
-                <span>UN 1361 Class 4.2 Maritime Certified</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-gray-300)' }}>
-                <CheckCircle2 size={16} color="var(--color-success)" />
-                <span>FSC® Verified Sourcing</span>
-              </div>
-            </div>
+
           </div>
 
           {/* Column 2: Core Products */}
@@ -96,13 +92,10 @@ export const Footer: React.FC = () => {
               Company & Process
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.9rem' }}>
-              <li><Link to="/about" className="footer-link">About Company</Link></li>
-              <li><Link to="/manufacturing" className="footer-link">6-Stage Manufacturing</Link></li>
-              <li><Link to="/quality" className="footer-link">Quality Assurance & Lab</Link></li>
-              <li><Link to="/packaging-export" className="footer-link">Packaging & Container Loading</Link></li>
-              <li><Link to="/gallery" className="footer-link">Factory Gallery</Link></li>
-              <li><Link to="/resources" className="footer-link">Educational Insights</Link></li>
-              <li><Link to="/faq" className="footer-link">B2B Buyer FAQs</Link></li>
+              <li><Link to="/about" className="footer-link" onClick={(e) => handleNavClick(e, '/about')}>About Company</Link></li>
+              <li><Link to="/manufacturing" className="footer-link" onClick={(e) => handleNavClick(e, '/manufacturing')}>6-Stage Manufacturing</Link></li>
+              <li><Link to="/gallery" className="footer-link" onClick={(e) => handleNavClick(e, '/gallery')}>Factory Gallery</Link></li>
+              <li><Link to="/faq" className="footer-link" onClick={(e) => handleNavClick(e, '/faq')}>B2B Buyer FAQs</Link></li>
             </ul>
           </div>
 
@@ -154,8 +147,9 @@ export const Footer: React.FC = () => {
           gap: '1rem',
           fontSize: '0.825rem'
         }}>
-          <div>
-            &copy; {currentYear} {brandConfig.companyName}. All international commercial rights reserved.
+
+          <div style={{ textTransform: 'uppercase' }}>
+            &copy; {currentYear} COALLUXE. ALL RIGHTS RESERVED.
           </div>
           <div style={{ display: 'flex', gap: '1.25rem' }}>
             <Link to="/privacy-policy" style={{ color: 'var(--color-gray-400)' }}>Privacy Policy</Link>

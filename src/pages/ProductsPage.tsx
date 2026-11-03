@@ -1,9 +1,9 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '../data/productsData';
 import { ProductCard } from '../components/ProductCard';
-import Breadcrumbs from '../components/Breadcrumbs';
-import { Search, ShieldCheck, ArrowRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, ShieldCheck, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const ProductsPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -143,39 +143,11 @@ export const ProductsPage: React.FC = () => {
 
   return (
     <div className="products-page">
-      {/* Page Header */}
-      <section style={{ 
-        backgroundColor: 'var(--color-carbon-900)', 
-        borderBottom: '1px solid var(--color-carbon-700)',
-        padding: '3rem 0 2.5rem' 
-      }}>
-        <div className="container">
-          <Breadcrumbs items={[{ label: 'Product Catalogue' }]} />
-          
-          <div style={{ maxWidth: '800px', marginTop: '1.25rem' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-              <span className="badge badge-accent">Industrial Export Catalogue</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--color-gray-400)' }}>• UN 1361 Class 4.2 Standard</span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', marginBottom: '1rem', lineHeight: 1.2 }}>
-              High-Calorie Commercial Charcoal Catalogue
-            </h1>
-            <p style={{ fontSize: '1.1rem', color: 'var(--color-gray-300)', lineHeight: 1.6 }}>
-              Direct export supply from verified kiln operations. Pure hardwood lump, extruded high-density sawdust briquettes, pure coconut shell shisha cubes, and artisanal Binchotan white charcoal.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Catalogue Filter & Search Bar */}
       <section style={{ 
         backgroundColor: 'var(--color-carbon-850)', 
         borderBottom: '1px solid var(--color-carbon-700)',
-        padding: '1.25rem 0',
-        position: 'sticky',
-        top: '106px',
-        zIndex: 50,
-        boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+        padding: '1.25rem 0'
       }}>
         <div className="container">
           <div style={{ 
@@ -452,11 +424,39 @@ export const ProductsPage: React.FC = () => {
 
           {/* Product Cards Grid */}
           {filteredAndSortedProducts.length > 0 ? (
-            <div className="product-grid" style={{ marginBottom: '4rem' }}>
-              {filteredAndSortedProducts.map(product => (
-                <ProductCard key={product.id} product={product} />
+            <motion.div 
+              className="product-grid" 
+              style={{ marginBottom: '4rem' }}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.08
+                  }
+                }
+              }}
+            >
+              {filteredAndSortedProducts.map((product) => (
+                <motion.div
+                  key={product.id}
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: { 
+                      opacity: 1, 
+                      y: 0,
+                      transition: {
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1]
+                      }
+                    }
+                  }}
+                >
+                  <ProductCard product={product} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ) : (
             /* Empty State */
             <div style={{
@@ -507,12 +507,48 @@ export const ProductsPage: React.FC = () => {
               </p>
             </div>
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <Link to="/request-quote" className="btn btn-primary">
-                Request Custom RFQ <ArrowRight size={16} />
-              </Link>
-              <Link to="/packaging-export" className="btn btn-secondary">
-                View Export Specs
-              </Link>
+              <a 
+                href="https://www.amazon.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#FF9900',
+                  color: '#000000',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.93 17.09c-.18.23-.46.35-.77.35-.31 0-.59-.12-.77-.35-.18-.23-.18-.54 0-.77.18-.23.46-.35.77-.35.31 0 .59.12.77.35.18.23.18.54 0 .77z"/>
+                  <path d="M18.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                </svg>
+                Shop on Amazon
+              </a>
+              <a 
+                href="https://www.flipkart.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#2874F0',
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                Shop on Flipkart
+              </a>
             </div>
           </div>
         </div>

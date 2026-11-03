@@ -17,7 +17,7 @@ export const TermsPage: React.FC = () => {
           <div style={{ marginTop: '1.25rem' }}>
             <span className="badge badge-accent" style={{ marginBottom: '0.5rem' }}>Incoterms® 2020 Framework</span>
             <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.5rem)', color: '#FFFFFF', marginBottom: '0.75rem' }}>
-              International Commercial Terms of Sale
+              Indian Commercial Terms of Sale
             </h1>
             <p style={{ color: 'var(--color-gray-400)', fontSize: '0.95rem' }}>
               Standard Operating Conditions for B2B Ocean Freight, Proforma Quotations & Production Supply
@@ -34,7 +34,7 @@ export const TermsPage: React.FC = () => {
                 1. Quotation Validity & Ocean Freight Fluctuations
               </h2>
               <p>
-                All proforma quotations issued by {BRAND_CONFIG.companyName} remain legally valid for fourteen (14) calendar days from the date of issuance unless explicitly stated otherwise. Because international container freight indices and bunker adjustment factors (BAF) vary weekly, CIF and CFR quotations are subject to carrier space reconfirmation at the time of official booking confirmation.
+                All proforma quotations issued by {BRAND_CONFIG.companyName} remain legally valid for fourteen (14) calendar days from the date of issuance unless explicitly stated otherwise. Because Indian container freight indices and bunker adjustment factors (BAF) vary weekly, CIF and CFR quotations are subject to carrier space reconfirmation at the time of official booking confirmation.
               </p>
             </div>
 
@@ -66,7 +66,7 @@ export const TermsPage: React.FC = () => {
                 4. Independent Pre-Shipment Inspection
               </h2>
               <p>
-                Buyers possess the right, at their own expense, to appoint an internationally recognized independent inspection agency (such as SGS, Intertek, or Bureau Veritas) to inspect goods at our warehouse prior to container stuffing or during container sealing. The results of such inspection are final with respect to cargo condition at the loading port.
+                Buyers possess the right, at their own expense, to appoint an Indianly recognized independent inspection agency (such as SGS, Intertek, or Bureau Veritas) to inspect goods at our warehouse prior to container stuffing or during container sealing. The results of such inspection are final with respect to cargo condition at the loading port.
               </p>
             </div>
 
@@ -79,7 +79,7 @@ export const TermsPage: React.FC = () => {
               </p>
               <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <li><strong>Telegraphic Transfer (T/T):</strong> 30% advance deposit upon proforma invoice signing to secure kiln capacity; 70% balance payable within 5 business days against transmission of scanned original Bills of Lading and Certificate of Analysis.</li>
-                <li><strong>Letter of Credit (L/C):</strong> 100% Irrevocable, confirmed Letter of Credit payable at sight against presentation of conforming shipping documents, issued by a prime international commercial bank.</li>
+                <li><strong>Letter of Credit (L/C):</strong> 100% Irrevocable, confirmed Letter of Credit payable at sight against presentation of conforming shipping documents, issued by a prime Indian commercial bank.</li>
               </ul>
             </div>
 

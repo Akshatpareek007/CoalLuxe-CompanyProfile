@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flame, ArrowRight, Home, Search } from 'lucide-react';
+import { Flame, Home, Search } from 'lucide-react';
 
 export const NotFoundPage: React.FC = () => {
   return (
@@ -50,9 +50,6 @@ export const NotFoundPage: React.FC = () => {
           </Link>
           <Link to="/products" className="btn btn-secondary" style={{ justifyContent: 'center' }}>
             <Search size={16} /> Explore Product Catalogue
-          </Link>
-          <Link to="/request-quote" className="btn btn-secondary" style={{ justifyContent: 'center' }}>
-            Request for Order/Supply <ArrowRight size={16} />
           </Link>
         </div>
 

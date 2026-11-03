@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { brandConfig } from '../config/brandConfig';
 import { MANUFACTURING_STEPS } from '../data/manufacturingSteps';
 import { GALLERY_DATA } from '../data/galleryData';
 import { ARTICLES_DATA } from '../data/articlesData';
 import { FAQ_DATA } from '../data/faqData';
 import { Lightbox } from '../components/Lightbox';
+import { AnimatedCounter } from '../components/animations/AnimatedCounter';
+import { TextReveal, StaggerContainer, StaggerItem, Floating } from '../components/animations';
 import { 
   Flame, 
   ShieldCheck, 
   Truck, 
   ArrowRight, 
   CheckCircle2, 
-  FileText, 
   Sparkles, 
   Users, 
   Package, 
@@ -23,6 +25,16 @@ import {
 export const HomePage: React.FC = () => {
   const [selectedLightboxImg, setSelectedLightboxImg] = useState<{ src: string; alt: string; caption: string } | null>(null);
   const [openFaqId, setOpenFaqId] = useState<string | null>('faq-oem-packaging');
+  const [introComplete, setIntroComplete] = useState(false);
+
+  useEffect(() => {
+    // Start hero animations while logo is still traveling for smooth transition
+    const timer = setTimeout(() => {
+      setIntroComplete(true);
+    }, 1800); // Overlap with logo animation ending (2500ms total)
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -34,82 +46,134 @@ export const HomePage: React.FC = () => {
           minHeight: '85vh',
           display: 'flex',
           alignItems: 'center',
-          backgroundImage: `linear-gradient(to right, rgba(11, 12, 14, 0.94) 30%, rgba(11, 12, 14, 0.75) 70%, rgba(11, 12, 14, 0.85)), url('/images/hero_bg.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
           borderBottom: '1px solid var(--color-carbon-700)',
-          padding: '5rem 0'
+          padding: '5rem 0',
+          overflow: 'hidden'
         }}
       >
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 0,
+            filter: 'brightness(1.25) contrast(1.35) saturate(1.2)'
+          }}
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Lighter Overlay for better video visibility */}
+        <div 
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(to right, rgba(11, 12, 14, 0.75) 20%, rgba(11, 12, 14, 0.45) 60%, rgba(11, 12, 14, 0.55))',
+            zIndex: 1
+          }}
+        />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ maxWidth: '780px' }}>
             
-            {/* Headline */}
-            <h1 style={{
-              fontSize: 'clamp(1.85rem, 3vw, 2.65rem)',
-              lineHeight: 1.22,
-              marginBottom: '1.25rem',
-              fontWeight: 800,
-              color: '#FFFFFF'
-            }}>
-              Premium Charcoal, Made from Carefully Selected Wood
+            {/* Headline with letter-by-letter reveal */}
+            <h1 
+              style={{
+                fontSize: 'clamp(1.85rem, 3vw, 2.65rem)',
+                lineHeight: 1.22,
+                marginBottom: '1.25rem',
+                fontWeight: 800,
+                color: '#FFFFFF'
+              }}
+            >
+              <TextReveal delay={0.3} staggerDelay={0.025}>
+                Premium Charcoal, Made from Carefully Selected Wood
+              </TextReveal>
             </h1>
 
-            {/* Supporting Copy */}
-            <p style={{
-              fontSize: 'clamp(1.05rem, 1.8vw, 1.3rem)',
-              color: 'var(--color-gray-200)',
-              lineHeight: 1.55,
-              marginBottom: '2.5rem',
-              maxWidth: '680px'
-            }}>
+            {/* Supporting Copy with word reveal */}
+            <motion.p 
+              initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+              animate={introComplete ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+              transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                fontSize: 'clamp(1.05rem, 1.8vw, 1.3rem)',
+                color: 'var(--color-gray-200)',
+                lineHeight: 1.55,
+                marginBottom: '2.5rem',
+                maxWidth: '680px'
+              }}
+            >
               Direct manufacturer and bulk supplier of high-quality wood charcoal, lumpwood, and briquettes. Consistent quality, reliable supply, and delivery across India for commercial and industrial requirements.
-            </p>
+            </motion.p>
 
-            {/* CTAs */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-              <Link to="/request-quote" className="btn btn-primary btn-lg" style={{ boxShadow: 'var(--shadow-accent)' }}>
-                <FileText size={18} /> Request for Order/Supply
-              </Link>
-              <Link to="/products" className="btn btn-secondary btn-lg">
-                Explore Product Range <ArrowRight size={18} />
-              </Link>
-            </div>
+            {/* CTAs with floating animation */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={introComplete ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}
+            >
+              <Floating duration={4} distance={3}>
+                <Link to="/products" className="btn btn-secondary btn-lg" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  Explore Product Range <ArrowRight size={18} />
+                </Link>
+              </Floating>
+            </motion.div>
 
-            {/* Quick Metrics Under Hero */}
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '2rem',
-              marginTop: '3.5rem',
-              paddingTop: '2rem',
-              borderTop: '1px solid rgba(255, 255, 255, 0.12)'
-            }}>
-              <div>
-                <div style={{ fontSize: '1.65rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-mono)' }}>
-                  &gt; 7,500
+            {/* Quick Metrics Under Hero with stagger animation */}
+            <StaggerContainer 
+              staggerDelay={0.15}
+              delayChildren={1.2}
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '2rem',
+                marginTop: '3.5rem',
+                paddingTop: '2rem',
+                borderTop: '1px solid rgba(255, 255, 255, 0.12)'
+              }}
+            >
+              <StaggerItem>
+                <div>
+                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-mono)' }}>
+                    <AnimatedCounter value={7500} prefix="> " suffix="" />
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--color-gray-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    kcal/kg Calorific Value
+                  </div>
                 </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--color-gray-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  kcal/kg Calorific Value
+              </StaggerItem>
+              <StaggerItem>
+                <div style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.12)', paddingLeft: '2rem' }}>
+                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-mono)' }}>
+                    <AnimatedCounter value={2.5} prefix="< " suffix="%" decimals={1} />
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--color-gray-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    Ultra-Low Ash Residue
+                  </div>
                 </div>
-              </div>
-              <div style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.12)', paddingLeft: '2rem' }}>
-                <div style={{ fontSize: '1.65rem', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-mono)' }}>
-                  &lt; 2.5%
+              </StaggerItem>
+              <StaggerItem>
+                <div style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.12)', paddingLeft: '2rem' }}>
+                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--color-accent-light)', fontFamily: 'var(--font-mono)' }}>
+                    <AnimatedCounter value={1000} suffix="+" />
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--color-gray-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    Satisfied Customers
+                  </div>
                 </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--color-gray-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Ultra-Low Ash Residue
-                </div>
-              </div>
-              <div style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.12)', paddingLeft: '2rem' }}>
-                <div style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--color-accent-light)', fontFamily: 'var(--font-mono)' }}>
-                  {brandConfig.satisfiedCustomersCount}
-                </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--color-gray-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Satisfied Customers
-                </div>
-              </div>
-            </div>
+              </StaggerItem>
+            </StaggerContainer>
 
           </div>
         </div>
@@ -167,17 +231,300 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION: CUSTOMER */}
-      <section className="section section-dark" id="customer" style={{ padding: '3.5rem 0' }}>
+      {/* SECTION: OUR ESTEEMED CUSTOMERS - DUAL MARQUEE */}
+      <section className="section section-dark" id="customer" style={{ padding: '4rem 0', overflow: 'hidden' }}>
         <div className="container">
-          <div className="section-header text-center" style={{ margin: 0 }}>
+          <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
             <span className="section-title-eyebrow">
-              <Users size={14} /> Customer
+              <Users size={14} /> Our Esteemed Customers
             </span>
-            <h2 style={{ marginBottom: 0 }}>Customer</h2>
+            <h2>Trusted by Industry Leaders Across India</h2>
+            <p className="section-subtitle">
+              Proudly supplying premium charcoal to hospitality chains and manufacturing giants nationwide
+            </p>
+          </div>
+        </div>
+
+        {/* MARQUEE 1: HOTELS & RESORTS - Left to Right */}
+        <div className="marquee-wrapper">
+          <div className="marquee-container">
+            <div className="marquee-track marquee-ltr">
+              {/* First set */}
+              {brandConfig.esteemedCustomers.map((customer, index) => (
+                <div key={`hotel-first-${index}`} className="marquee-item">
+                  <motion.span
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ 
+                      fontSize: '0.95rem', 
+                      fontWeight: 600, 
+                      color: 'var(--color-gray-200)',
+                      whiteSpace: 'nowrap',
+                      cursor: 'default'
+                    }}
+                  >
+                    {customer.name}
+                  </motion.span>
+                </div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {brandConfig.esteemedCustomers.map((customer, index) => (
+                <div key={`hotel-second-${index}`} className="marquee-item">
+                  <motion.span
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ 
+                      fontSize: '0.95rem', 
+                      fontWeight: 600, 
+                      color: 'var(--color-gray-200)',
+                      whiteSpace: 'nowrap',
+                      cursor: 'default'
+                    }}
+                  >
+                    {customer.name}
+                  </motion.span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        {/* Trust Indicators */}
+        <div className="container">
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '3rem',
+            marginTop: '3rem',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                fontSize: '2rem',
+                fontWeight: 800,
+                color: 'var(--color-accent)',
+                fontFamily: 'var(--font-mono)'
+              }}>
+                {brandConfig.satisfiedCustomersCount}
+              </div>
+              <div style={{
+                fontSize: '0.8rem',
+                color: 'var(--color-gray-400)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                Satisfied Customers
+              </div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                fontSize: '2rem',
+                fontWeight: 800,
+                color: 'var(--color-accent)',
+                fontFamily: 'var(--font-mono)'
+              }}>
+                {brandConfig.repeatCustomerRate}
+              </div>
+              <div style={{
+                fontSize: '0.8rem',
+                color: 'var(--color-gray-400)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                Repeat Order Rate
+              </div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                fontSize: '2rem',
+                fontWeight: 800,
+                color: 'var(--color-accent)',
+                fontFamily: 'var(--font-mono)'
+              }}>
+                50+
+              </div>
+              <div style={{
+                fontSize: '0.8rem',
+                color: 'var(--color-gray-400)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                Premium Hotel Chains
+              </div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                fontSize: '2rem',
+                fontWeight: 800,
+                color: 'var(--color-accent)',
+                fontFamily: 'var(--font-mono)'
+              }}>
+                8+
+              </div>
+              <div style={{
+                fontSize: '0.8rem',
+                color: 'var(--color-gray-400)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                Industrial Partners
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Customer Section Styles */}
+      <style>{`
+        .marquee-wrapper {
+          margin-bottom: 1rem;
+        }
+        
+        .marquee-label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--color-gray-300);
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+        
+        .label-icon {
+          font-size: 1.2rem;
+        }
+        
+        .marquee-container {
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+          padding: 1rem 0;
+        }
+        
+        .marquee-container::before,
+        .marquee-container::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          width: 100px;
+          height: 100%;
+          z-index: 2;
+          pointer-events: none;
+        }
+        
+        .marquee-container::before {
+          left: 0;
+          background: linear-gradient(to right, var(--color-carbon-900), transparent);
+        }
+        
+        .marquee-container::after {
+          right: 0;
+          background: linear-gradient(to left, var(--color-carbon-900), transparent);
+        }
+        
+        .marquee-track {
+          display: flex;
+          gap: 3rem;
+          width: fit-content;
+        }
+        
+        .marquee-track:hover {
+          animation-play-state: paused;
+        }
+        
+        /* Left to Right - Hotels (slower, elegant) */
+        .marquee-ltr {
+          animation: marquee-ltr 50s linear infinite;
+        }
+        
+        @keyframes marquee-ltr {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+        
+        /* Right to Left - Industrial (faster, dynamic) */
+        .marquee-rtl {
+          animation: marquee-rtl 35s linear infinite;
+        }
+        
+        @keyframes marquee-rtl {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .marquee-item {
+          flex-shrink: 0;
+          width: auto;
+          min-width: auto;
+          height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--color-carbon-850);
+          border: 1px solid var(--color-carbon-700);
+          border-radius: 8px;
+          padding: 0.75rem 1.25rem;
+          margin: 0 0.5rem;
+          box-shadow: none;
+          outline: none;
+        }
+        
+        .marquee-item > * {
+          border: none !important;
+          box-shadow: none !important;
+          outline: none !important;
+        }
+        
+        .customer-logo-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+        }
+        
+        .customer-logo-img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+          filter: grayscale(100%) brightness(1.3);
+          opacity: 0.85;
+          transition: all 0.3s ease;
+        }
+        
+        .marquee-item:hover .customer-logo-img {
+          filter: grayscale(0%) brightness(1);
+          opacity: 1;
+        }
+        
+        .customer-logo-text {
+          color: var(--color-gray-200);
+          font-size: 0.85rem;
+          font-weight: 600;
+          text-align: center;
+          font-family: var(--font-heading);
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-ltr,
+          .marquee-rtl {
+            animation: none;
+          }
+        }
+      `}</style>
 
       {/* SECTION 6: WHY CHOOSE US / VALUE PROPOSITION */}
       <section className="section section-darker">
@@ -211,7 +558,7 @@ export const HomePage: React.FC = () => {
               <div style={{ width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'var(--color-success-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
                 <ShieldCheck size={24} color="var(--color-success)" />
               </div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem', color: '#FFFFFF' }}>Certified Lab Quality & Safety</h3>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem', color: '#FFFFFF' }}>Lab Quality & Safety</h3>
               <p style={{ fontSize: '0.9rem', color: 'var(--color-gray-400)', lineHeight: 1.6 }}>
                 Every batch is lab-tested for moisture, ash residue, and calorific value, accompanied by comprehensive test reports and safety documentation for commercial peace of mind.
               </p>
@@ -253,32 +600,45 @@ export const HomePage: React.FC = () => {
                 High-quality charcoal is not made rapidly. It requires 18 to 22 days of controlled oxygen-starvation in traditional brick kilns, followed by a mandatory 10-day stabilization period to eliminate internal thermal pockets.
               </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                {MANUFACTURING_STEPS.slice(0, 3).map(step => (
-                  <div key={step.stepNumber} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                    <div style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: 'var(--radius-sm)',
-                      backgroundColor: 'var(--color-carbon-800)',
-                      border: '1px solid var(--color-accent-border)',
-                      color: 'var(--color-accent-light)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontFamily: 'var(--font-mono)',
-                      fontWeight: 700,
-                      flexShrink: 0
-                    }}>
-                      {step.stepNumber}
-                    </div>
-                    <div>
-                      <h4 style={{ fontSize: '1.05rem', color: '#FFFFFF', marginBottom: '0.25rem' }}>{step.title}</h4>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--color-gray-400)', margin: 0 }}>{step.shortDesc}</p>
-                    </div>
-                  </div>
+              <StaggerContainer staggerDelay={0.15} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                {MANUFACTURING_STEPS.slice(0, 3).map((step) => (
+                  <StaggerItem key={step.stepNumber}>
+                    <motion.div 
+                      style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}
+                      whileHover={{ x: 10, transition: { duration: 0.2 } }}
+                    >
+                      <motion.div 
+                        style={{
+                          width: '38px',
+                          height: '38px',
+                          borderRadius: 'var(--radius-sm)',
+                          backgroundColor: 'var(--color-carbon-800)',
+                          border: '1px solid var(--color-accent-border)',
+                          color: 'var(--color-accent-light)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontFamily: 'var(--font-mono)',
+                          fontWeight: 700,
+                          flexShrink: 0
+                        }}
+                        whileHover={{ 
+                          scale: 1.1, 
+                          backgroundColor: 'var(--color-accent)',
+                          color: '#000000',
+                          transition: { duration: 0.2 }
+                        }}
+                      >
+                        {step.stepNumber}
+                      </motion.div>
+                      <div>
+                        <h4 style={{ fontSize: '1.05rem', color: '#FFFFFF', marginBottom: '0.25rem' }}>{step.title}</h4>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--color-gray-400)', margin: 0 }}>{step.shortDesc}</p>
+                      </div>
+                    </motion.div>
+                  </StaggerItem>
                 ))}
-              </div>
+              </StaggerContainer>
 
               <div style={{ marginTop: '2.25rem' }}>
                 <Link to="/manufacturing" className="btn btn-primary btn-md">
@@ -340,7 +700,7 @@ export const HomePage: React.FC = () => {
                 Batch Testing & Chemical Certification
               </h3>
               <p style={{ fontSize: '0.9rem', color: 'var(--color-gray-300)', lineHeight: 1.6, flexGrow: 1 }}>
-                Every production lot is sampled by certified technicians using digital moisture balances, bomb calorimeters, and muffle furnaces to ensure specifications strictly adhere to international B2B contracts.
+                Every production lot is sampled by certified technicians using digital moisture balances, bomb calorimeters, and muffle furnaces to ensure specifications strictly adhere to Indian B2B contracts.
               </p>
               <div style={{ marginTop: '1.25rem' }}>
                 <Link to="/quality" className="btn btn-secondary btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
@@ -393,58 +753,79 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '1.25rem'
-          }}>
-            {GALLERY_DATA.slice(0, 4).map(item => (
-              <div 
-                key={item.id}
-                onClick={() => setSelectedLightboxImg({ src: item.image, alt: item.title, caption: item.caption })}
-                style={{
-                  position: 'relative',
-                  paddingTop: '75%',
-                  borderRadius: 'var(--radius-md)',
-                  overflow: 'hidden',
-                  cursor: 'pointer',
-                  border: '1px solid var(--color-carbon-700)',
-                  backgroundColor: 'var(--color-carbon-850)'
-                }}
-                className="gallery-thumb-card"
-              >
-                <img 
-                  src={item.image} 
-                  alt={item.title}
+          <StaggerContainer 
+            staggerDelay={0.1}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '1.25rem'
+            }}
+          >
+            {GALLERY_DATA.slice(0, 4).map((item) => (
+              <StaggerItem key={item.id}>
+                <motion.div 
+                  onClick={() => setSelectedLightboxImg({ src: item.image, alt: item.title, caption: item.caption })}
                   style={{
-                    position: 'absolute',
-                    inset: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform var(--transition-normal)'
-                  }} 
-                />
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(to top, rgba(11, 12, 14, 0.9) 10%, transparent 60%)',
-                  display: 'flex',
-                  alignItems: 'flex-end',
-                  padding: '1rem'
-                }}>
-                  <div>
-                    <div style={{ fontSize: '0.7rem', color: 'var(--color-accent)', fontWeight: 700, textTransform: 'uppercase' }}>
-                      {item.categoryLabel}
+                    position: 'relative',
+                    paddingTop: '75%',
+                    borderRadius: 'var(--radius-md)',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    border: '1px solid var(--color-carbon-700)',
+                    backgroundColor: 'var(--color-carbon-850)'
+                  }}
+                  className="gallery-thumb-card"
+                  whileHover={{ scale: 1.03, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                    }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }} 
+                    />
+                  </motion.div>
+                  <motion.div 
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to top, rgba(11, 12, 14, 0.9) 10%, transparent 60%)',
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      padding: '1rem'
+                    }}
+                    initial={{ opacity: 0.8 }}
+                    whileHover={{ opacity: 1 }}
+                  >
+                    <div>
+                      <motion.div 
+                        style={{ fontSize: '0.7rem', color: 'var(--color-accent)', fontWeight: 700, textTransform: 'uppercase' }}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileHover={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {item.categoryLabel}
+                      </motion.div>
+                      <div style={{ fontSize: '0.9rem', color: '#FFFFFF', fontWeight: 600 }}>
+                        {item.title}
+                      </div>
                     </div>
-                    <div style={{ fontSize: '0.9rem', color: '#FFFFFF', fontWeight: 600 }}>
-                      {item.title}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  </motion.div>
+                </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -459,29 +840,53 @@ export const HomePage: React.FC = () => {
                 Frequently Answered
               </span>
               <h2 style={{ marginBottom: '1.5rem' }}>B2B Procurement FAQs</h2>
-              <div className="accordion">
-                {FAQ_DATA.slice(0, 4).map(faq => {
+              <StaggerContainer staggerDelay={0.1} className="accordion">
+                {FAQ_DATA.slice(0, 4).map((faq) => {
                   const isOpen = openFaqId === faq.id;
                   return (
-                    <div key={faq.id} className={`accordion-item ${isOpen ? 'active' : ''}`}>
-                      <button
-                        type="button"
-                        onClick={() => setOpenFaqId(isOpen ? null : faq.id)}
-                        className="accordion-header"
-                        aria-expanded={isOpen}
+                    <StaggerItem key={faq.id}>
+                      <motion.div 
+                        className={`accordion-item ${isOpen ? 'active' : ''}`}
+                        initial={false}
+                        animate={{ 
+                          backgroundColor: isOpen ? 'var(--color-carbon-800)' : 'transparent',
+                          borderColor: isOpen ? 'var(--color-accent-border)' : 'var(--color-carbon-700)'
+                        }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <span>{faq.question}</span>
-                        <ChevronDown size={18} className="accordion-icon" />
-                      </button>
-                      {isOpen && (
-                        <div className="accordion-body">
+                        <motion.button
+                          type="button"
+                          onClick={() => setOpenFaqId(isOpen ? null : faq.id)}
+                          className="accordion-header"
+                          aria-expanded={isOpen}
+                          whileHover={{ x: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <span>{faq.question}</span>
+                          <motion.div
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <ChevronDown size={18} className="accordion-icon" />
+                          </motion.div>
+                        </motion.button>
+                        <motion.div 
+                          className="accordion-body"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ 
+                            height: isOpen ? 'auto' : 0, 
+                            opacity: isOpen ? 1 : 0 
+                          }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          style={{ overflow: 'hidden' }}
+                        >
                           {faq.answer}
-                        </div>
-                      )}
-                    </div>
+                        </motion.div>
+                      </motion.div>
+                    </StaggerItem>
                   );
                 })}
-              </div>
+              </StaggerContainer>
               <div style={{ marginTop: '1.5rem' }}>
                 <Link to="/faq" style={{ color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.9rem' }}>
                   View All FAQs & Buyer Policies &rarr;
@@ -495,34 +900,47 @@ export const HomePage: React.FC = () => {
                 Technical Knowledge
               </span>
               <h2 style={{ marginBottom: '1.5rem' }}>Industry Insights</h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                {ARTICLES_DATA.map(article => (
-                  <article 
-                    key={article.id}
-                    className="b2b-card"
-                    style={{ padding: '1.25rem', display: 'flex', gap: '1rem', alignItems: 'center' }}
-                  >
-                    <img 
-                      src={article.image} 
-                      alt="" 
-                      style={{ width: '85px', height: '85px', borderRadius: 'var(--radius-sm)', objectFit: 'cover', flexShrink: 0 }}
-                    />
-                    <div>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--color-accent)', fontWeight: 700, textTransform: 'uppercase' }}>
-                        {article.category}
+              <StaggerContainer staggerDelay={0.12} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                {ARTICLES_DATA.map((article) => (
+                  <StaggerItem key={article.id}>
+                    <motion.article 
+                      className="b2b-card"
+                      style={{ padding: '1.25rem', display: 'flex', gap: '1rem', alignItems: 'center' }}
+                      whileHover={{ 
+                        y: -5, 
+                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      <motion.img 
+                        src={article.image} 
+                        alt="" 
+                        style={{ width: '85px', height: '85px', borderRadius: 'var(--radius-sm)', objectFit: 'cover', flexShrink: 0 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                      <div>
+                        <motion.div 
+                          style={{ fontSize: '0.75rem', color: 'var(--color-accent)', fontWeight: 700, textTransform: 'uppercase' }}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 }}
+                        >
+                          {article.category}
+                        </motion.div>
+                        <h4 style={{ fontSize: '1rem', color: '#FFFFFF', margin: '0.25rem 0' }}>
+                          <Link to={`/resources/${article.slug}`} style={{ color: '#FFFFFF', textDecoration: 'none' }}>
+                            {article.title}
+                          </Link>
+                        </h4>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--color-gray-400)' }}>
+                          {article.publishDate} &bull; {article.readTime}
+                        </div>
                       </div>
-                      <h4 style={{ fontSize: '1rem', color: '#FFFFFF', margin: '0.25rem 0' }}>
-                        <Link to={`/resources/${article.slug}`} style={{ color: '#FFFFFF', textDecoration: 'none' }}>
-                          {article.title}
-                        </Link>
-                      </h4>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--color-gray-400)' }}>
-                        {article.publishDate} &bull; {article.readTime}
-                      </div>
-                    </div>
-                  </article>
+                    </motion.article>
+                  </StaggerItem>
                 ))}
-              </div>
+              </StaggerContainer>
               <div style={{ marginTop: '1.5rem' }}>
                 <Link to="/resources" style={{ color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.9rem' }}>
                   Read More Technical Guides &rarr;
@@ -568,9 +986,6 @@ export const HomePage: React.FC = () => {
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link to="/request-quote" className="btn btn-primary btn-lg">
-              <FileText size={18} /> Request Bulk Quotation
-            </Link>
             <Link to="/contact" className="btn btn-secondary btn-lg">
               Contact Sales Desk
             </Link>

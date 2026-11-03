@@ -54,7 +54,7 @@ export const ARTICLES_DATA: Article[] = [
       'Correct container cooling, moisture control, and stuffing protocols are essential to prevent port customs rejections.'
     ],
     content: [
-      'Charcoal export is strictly regulated under the International Maritime Dangerous Goods (IMDG) Code. Because freshly processed charcoal can undergo slow exothermic oxidation if exposed to moisture or packed prematurely, carriers categorize it under UN 1361, Class 4.2 (Substances liable to spontaneous combustion).',
+      'Charcoal export is strictly regulated under the Indian Maritime Dangerous Goods (IMDG) Code. Because freshly processed charcoal can undergo slow exothermic oxidation if exposed to moisture or packed prematurely, carriers categorize it under UN 1361, Class 4.2 (Substances liable to spontaneous combustion).',
       'To ensure seamless booking approval with top container lines (Maersk, MSC, CMA CGM, ONE, Evergreen), exporters must maintain an unbroken chain of verified safety documentation for every batch.',
       'First is the 16-section Material Safety Data Sheet (MSDS), updated to GHS standards and provided in both English and destination languages. Second is the Self-Heating Substance Test conducted according to the UN Recommendations on the Transport of Dangerous Goods (Manual of Tests and Criteria, Part III, section 33.3.1.6).',
       'In our manufacturing facilities, freshly carbonized charcoal is subjected to a mandatory multi-day stabilization and cooling period inside covered, well-ventilated staging sheds before any packaging begins.',

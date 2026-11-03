@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" fill="transparent"/>
+  <!-- Marriott Logo Recreation -->
+  <text x="100" y="35" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#8B1D3D" text-anchor="middle" letter-spacing="3">MARRIOTT</text>
+  <!-- Elegant underline -->
+  <line x1="60" y1="42" x2="140" y2="42" stroke="#8B1D3D" stroke-width="1.5"/>
+</svg>

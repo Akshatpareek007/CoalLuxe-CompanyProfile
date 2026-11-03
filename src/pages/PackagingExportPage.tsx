@@ -4,11 +4,10 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import { 
   Package, 
   ShieldCheck, 
-  FileText, 
+  FileText,
   Globe2, 
   CheckCircle2, 
-  Layers, 
-  ArrowRight,
+  Layers,
   Box
 } from 'lucide-react';
 import { BRAND_CONFIG } from '../config/brandConfig';
@@ -186,12 +185,12 @@ export const PackagingExportPage: React.FC = () => {
                   UN 1361 Class 4.2 Compliance & Safety Clearance
                 </h3>
                 <p style={{ color: 'var(--color-gray-300)', lineHeight: 1.7, fontSize: '0.95rem', marginBottom: '1.25rem' }}>
-                  Under the International Maritime Dangerous Goods (IMDG) Code, vegetable-origin charcoal is classified under UN 1361 Class 4.2. To safeguard ocean vessels and prevent delays, our maritime logistics department coordinates:
+                  Under the Indian Maritime Dangerous Goods (IMDG) Code, vegetable-origin charcoal is classified under UN 1361 Class 4.2. To safeguard ocean vessels and prevent delays, our maritime logistics department coordinates:
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: 'var(--color-gray-200)', fontSize: '0.9rem' }}>
                     <CheckCircle2 size={16} style={{ color: 'var(--color-success)' }} />
-                    <span>Certified Self-Heating Test Report (UN 33.3.1.6) from SGS / Vilas laboratory</span>
+                    <span>Self-Heating Test Report (UN 33.3.1.6) from SGS / Vilas laboratory</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: 'var(--color-gray-200)', fontSize: '0.9rem' }}>
                     <CheckCircle2 size={16} style={{ color: 'var(--color-success)' }} />
@@ -224,7 +223,7 @@ export const PackagingExportPage: React.FC = () => {
                   <li>• Original Ocean Clean On-Board Bills of Lading (3/3)</li>
                   <li>• Commercial Invoice & Detailed Packing List</li>
                   <li>• Certificate of Origin (Form A, Form E, or REX)</li>
-                  <li>• Certified Certificate of Analysis (COA)</li>
+                  <li>• Certificate of Analysis (COA)</li>
                   <li>• Fumigation & Non-Timber Quarantine Certificate</li>
                   <li>• Vanning Survey & Container Seal Verification</li>
                 </ul>
@@ -283,9 +282,6 @@ export const PackagingExportPage: React.FC = () => {
               Provide your city, state, packaging requirement, and estimated monthly tonnage. We will deliver competitive bulk truckload quotes with door delivery options.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              <Link to="/request-quote" className="btn btn-primary btn-lg">
-                Request Bulk Quotation <ArrowRight size={18} />
-              </Link>
               <Link to="/contact" className="btn btn-secondary btn-lg">
                 Contact Sales Desk
               </Link>

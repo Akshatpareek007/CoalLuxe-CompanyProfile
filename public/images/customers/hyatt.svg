@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" fill="transparent"/>
+  <!-- Hyatt Logo Recreation -->
+  <text x="100" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#000000" text-anchor="middle" letter-spacing="4">HYATT</text>
+  <!-- Subtle accent -->
+  <text x="100" y="48" font-family="Arial, sans-serif" font-size="8" font-weight="400" fill="#666666" text-anchor="middle" letter-spacing="2">HOTELS</text>
+</svg>

@@ -3,7 +3,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { ARTICLES_DATA } from '../data/articlesData';
 import { PRODUCTS_DATA } from '../data/productsData';
-import { Calendar, Clock, User, ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { Calendar, Clock, User, ArrowLeft, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 export const ArticleDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -133,23 +133,56 @@ export const ArticleDetailPage: React.FC = () => {
               </div>
 
               <div style={{ display: 'flex', gap: '0.75rem' }}>
-                <Link to={`/products/${relatedProduct.slug}`} className="btn btn-secondary btn-sm">
-                  View Full Specs
-                </Link>
-                <Link to={`/request-quote?product=${encodeURIComponent(relatedProduct.name)}`} className="btn btn-primary btn-sm">
-                  Get Quote <ArrowRight size={14} />
-                </Link>
+                <a 
+                  href="https://www.amazon.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-sm"
+                  style={{ 
+                    backgroundColor: '#FF9900',
+                    color: '#000000',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.25rem'
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.93 17.09c-.18.23-.46.35-.77.35-.31 0-.59-.12-.77-.35-.18-.23-.18-.54 0-.77.18-.23.46-.35.77-.35.31 0 .59.12.77.35.18.23.18.54 0 .77z"/>
+                    <path d="M18.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                  </svg>
+                  Amazon
+                </a>
+                <a 
+                  href="https://www.flipkart.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-sm"
+                  style={{ 
+                    backgroundColor: '#2874F0',
+                    color: '#FFFFFF',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.25rem'
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                  Flipkart
+                </a>
               </div>
             </div>
           )}
 
           {/* Navigation Back */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--color-carbon-800)', paddingTop: '2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid var(--color-carbon-800)', paddingTop: '2rem' }}>
             <Link to="/resources" className="btn btn-secondary">
               <ArrowLeft size={16} /> All Resources
-            </Link>
-            <Link to="/request-quote" className="btn btn-primary">
-              Request Quotation <ArrowRight size={16} />
             </Link>
           </div>
         </div>

@@ -1,8 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import Breadcrumbs from '../components/Breadcrumbs';
 import { FAQ_DATA } from '../data/faqData';
-import { ChevronDown, Search, HelpCircle, MessageSquare, ArrowRight, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ChevronDown, Search, HelpCircle, MessageSquare, X } from 'lucide-react';
 
 export const FAQPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -36,30 +34,6 @@ export const FAQPage: React.FC = () => {
 
   return (
     <div className="faq-page">
-      {/* Page Header */}
-      <section style={{ 
-        backgroundColor: 'var(--color-carbon-900)', 
-        borderBottom: '1px solid var(--color-carbon-700)',
-        padding: '3rem 0 2.5rem' 
-      }}>
-        <div className="container">
-          <Breadcrumbs items={[{ label: 'Frequently Asked Questions' }]} />
-
-          <div style={{ maxWidth: '850px', marginTop: '1.25rem' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-              <span className="badge badge-accent">B2B Procurement Knowledge Base</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--color-gray-400)' }}>• Export & Compliance Answers</span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', marginBottom: '1rem', lineHeight: 1.2 }}>
-              Frequently Asked Questions & B2B Policies
-            </h1>
-            <p style={{ fontSize: '1.1rem', color: 'var(--color-gray-300)', lineHeight: 1.6 }}>
-              Find comprehensive answers regarding container MOQ, private label plate printing, Dangerous Goods UN 1361 ocean transport, Incoterms, and payment security.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Filter and Accordions */}
       <section style={{ padding: '3.5rem 0 5rem', backgroundColor: 'var(--color-carbon-950)' }}>
         <div className="container" style={{ maxWidth: '900px' }}>
@@ -258,12 +232,48 @@ export const FAQPage: React.FC = () => {
               </p>
             </div>
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <Link to="/contact" className="btn btn-secondary">
-                Contact Desk
-              </Link>
-              <Link to="/request-quote" className="btn btn-primary">
-                Submit RFQ <ArrowRight size={16} />
-              </Link>
+              <a 
+                href="https://www.amazon.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#FF9900',
+                  color: '#000000',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.93 17.09c-.18.23-.46.35-.77.35-.31 0-.59-.12-.77-.35-.18-.23-.18-.54 0-.77.18-.23.46-.35.77-.35.31 0 .59.12.77.35.18.23.18.54 0 .77z"/>
+                  <path d="M18.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                </svg>
+                Shop on Amazon
+              </a>
+              <a 
+                href="https://www.flipkart.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#2874F0',
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                Shop on Flipkart
+              </a>
             </div>
           </div>
         </div>

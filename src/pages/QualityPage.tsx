@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { 
   FlaskConical, 
   ShieldCheck, 
   FileCheck, 
-  ArrowRight,
   AlertTriangle
 } from 'lucide-react';
 
@@ -31,7 +29,7 @@ export const QualityPage: React.FC = () => {
               Rigorous Laboratory Quality Control & Testing
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'var(--color-gray-300)', lineHeight: 1.6 }}>
-              In international bio-carbon trade, consistent thermal performance and strict moisture control are paramount. We distinguish our internal factory line checks from third-party certified testing, ensuring complete commercial transparency for wholesale buyers.
+              In Indian bio-carbon trade, consistent thermal performance and strict moisture control are paramount. We distinguish our internal factory line checks from third-party testing, ensuring complete commercial transparency for wholesale buyers.
             </p>
           </div>
         </div>
@@ -230,7 +228,7 @@ export const QualityPage: React.FC = () => {
 
             <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.825rem', color: 'var(--color-gray-400)' }}>
               <AlertTriangle size={15} style={{ color: 'var(--color-accent)' }} />
-              <span>Note: Actual certified COA values vary slightly between production batches and timber harvest cycles. Full batch reports are issued alongside container dispatch documentation.</span>
+              <span>Note: Actual COA values vary slightly between production batches and timber harvest cycles. Full batch reports are issued alongside container dispatch documentation.</span>
             </div>
           </div>
 
@@ -248,19 +246,55 @@ export const QualityPage: React.FC = () => {
           }}>
             <div style={{ maxWidth: '650px' }}>
               <h3 style={{ fontSize: '1.35rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>
-                Need Certified Pre-Shipment Laboratory Samples?
+                Need Pre-Shipment Laboratory Samples?
               </h3>
               <p style={{ color: 'var(--color-gray-400)', fontSize: '0.95rem', margin: 0, lineHeight: 1.6 }}>
-                We provide 2kg–5kg sample parcels via international air express (DHL / FedEx) complete with corresponding factory proximate analysis reports for buyer verification.
+                We provide 2kg–5kg sample parcels via Indian air express (DHL / FedEx) complete with corresponding factory proximate analysis reports for buyer verification.
               </p>
             </div>
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <Link to="/request-quote?sample=true" className="btn btn-primary">
-                Request Test Samples <ArrowRight size={16} />
-              </Link>
-              <Link to="/contact" className="btn btn-secondary">
-                Speak with QA Team
-              </Link>
+              <a 
+                href="https://www.amazon.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#FF9900',
+                  color: '#000000',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.93 17.09c-.18.23-.46.35-.77.35-.31 0-.59-.12-.77-.35-.18-.23-.18-.54 0-.77.18-.23.46-.35.77-.35.31 0 .59.12.77.35.18.23.18.54 0 .77z"/>
+                  <path d="M18.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                </svg>
+                Shop on Amazon
+              </a>
+              <a 
+                href="https://www.flipkart.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#2874F0',
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                Shop on Flipkart
+              </a>
             </div>
           </div>
         </div>

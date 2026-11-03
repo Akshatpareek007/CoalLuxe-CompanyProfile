@@ -7,8 +7,7 @@ import {
   ChevronDown, 
   Flame, 
   Search, 
-  PhoneCall, 
-  FileText,
+  PhoneCall,
   ShieldCheck,
   Package,
   Layers,
@@ -25,7 +24,6 @@ export const Header: React.FC<HeaderProps> = ({ hideLogoUntilIntroDone = false }
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [scrolled, setScrolled] = useState(false);
-  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -42,7 +40,6 @@ export const Header: React.FC<HeaderProps> = ({ hideLogoUntilIntroDone = false }
   const closeMenus = () => {
     setMobileMenuOpen(false);
     setSearchOpen(false);
-    setAboutDropdownOpen(false);
     setProductsDropdownOpen(false);
   };
 
@@ -222,77 +219,15 @@ export const Header: React.FC<HeaderProps> = ({ hideLogoUntilIntroDone = false }
                 )}
               </div>
 
-              {/* About Dropdown */}
-              <div 
-                className="nav-item-dropdown"
-                style={{ position: 'relative' }}
-                onMouseEnter={() => setAboutDropdownOpen(true)}
-                onMouseLeave={() => setAboutDropdownOpen(false)}
-              >
-                <NavLink 
-                  to="/about" 
-                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                  style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
-                  aria-expanded={aboutDropdownOpen}
-                >
-                  About Us <ChevronDown size={14} style={{ transform: aboutDropdownOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
-                </NavLink>
-
-                {aboutDropdownOpen && (
-                  <div className="dropdown-menu" style={{
-                    position: 'absolute',
-                    top: '100%',
-                    left: 0,
-                    width: '260px',
-                    backgroundColor: 'var(--color-carbon-900)',
-                    border: '1px solid var(--color-carbon-700)',
-                    borderRadius: 'var(--radius-md)',
-                    boxShadow: 'var(--shadow-xl)',
-                    padding: '0.5rem 0',
-                    zIndex: 950
-                  }}>
-                    <Link to="/about" onClick={closeMenus} className="dropdown-item">
-                      <div>
-                        <div className="dropdown-title">Company Profile</div>
-                        <div className="dropdown-desc">Corporate background & mission</div>
-                      </div>
-                    </Link>
-                    <Link to="/manufacturing" onClick={closeMenus} className="dropdown-item">
-                      <div>
-                        <div className="dropdown-title">Manufacturing Process</div>
-                        <div className="dropdown-desc">6-stage kiln carbonization</div>
-                      </div>
-                    </Link>
-                    <Link to="/quality" onClick={closeMenus} className="dropdown-item">
-                      <div>
-                        <div className="dropdown-title">Quality Assurance</div>
-                        <div className="dropdown-desc">Laboratory tests & standards</div>
-                      </div>
-                    </Link>
-                    <Link to="/packaging-export" onClick={closeMenus} className="dropdown-item">
-                      <div>
-                        <div className="dropdown-title">Packaging & Delivery</div>
-                        <div className="dropdown-desc">Bulk transport & packaging standards</div>
-                      </div>
-                    </Link>
-                  </div>
-                )}
-              </div>
+              <NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+                About Us
+              </NavLink>
 
               <NavLink to="/manufacturing" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
                 Manufacturing
               </NavLink>
-              <NavLink to="/quality" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-                Quality
-              </NavLink>
-              <NavLink to="/packaging-export" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-                Delivery
-              </NavLink>
               <NavLink to="/gallery" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
                 Gallery
-              </NavLink>
-              <NavLink to="/resources" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-                Resources
               </NavLink>
               <NavLink to="/faq" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
                 FAQ
@@ -318,14 +253,6 @@ export const Header: React.FC<HeaderProps> = ({ hideLogoUntilIntroDone = false }
               >
                 <Search size={16} />
               </button>
-
-              <Link 
-                to="/request-quote" 
-                className="btn btn-primary btn-sm header-quote-btn"
-                style={{ fontWeight: 700, letterSpacing: '0.02em', padding: '0.5rem 0.9rem', fontSize: '0.85rem' }}
-              >
-                <FileText size={15} /> Request Quote
-              </Link>
 
               {/* Mobile Menu Button */}
               <button
@@ -497,23 +424,12 @@ export const Header: React.FC<HeaderProps> = ({ hideLogoUntilIntroDone = false }
               <NavLink to="/products" onClick={closeMenus} className="mobile-nav-link">Products Catalogue</NavLink>
               <NavLink to="/about" onClick={closeMenus} className="mobile-nav-link">About Us</NavLink>
               <NavLink to="/manufacturing" onClick={closeMenus} className="mobile-nav-link">Manufacturing Process</NavLink>
-              <NavLink to="/quality" onClick={closeMenus} className="mobile-nav-link">Quality Assurance</NavLink>
-              <NavLink to="/packaging-export" onClick={closeMenus} className="mobile-nav-link">Packaging & Delivery</NavLink>
               <NavLink to="/gallery" onClick={closeMenus} className="mobile-nav-link">Facility Gallery</NavLink>
-              <NavLink to="/resources" onClick={closeMenus} className="mobile-nav-link">Resources & Insights</NavLink>
               <NavLink to="/faq" onClick={closeMenus} className="mobile-nav-link">Frequently Asked Questions</NavLink>
               <NavLink to="/contact" onClick={closeMenus} className="mobile-nav-link">Contact & Inquiries</NavLink>
             </nav>
 
             <div style={{ marginTop: 'auto', paddingTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <Link 
-                to="/request-quote" 
-                onClick={closeMenus}
-                className="btn btn-primary btn-lg"
-                style={{ width: '100%', justifyContent: 'center' }}
-              >
-                <FileText size={18} /> Request Bulk Quote
-              </Link>
               <a 
                 href={`tel:${brandConfig.phone.replace(/[^0-9+]/g, '')}`} 
                 className="btn btn-secondary"

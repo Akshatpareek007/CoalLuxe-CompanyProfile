@@ -12,9 +12,9 @@ export interface ManufacturingStep {
 export const MANUFACTURING_STEPS: ManufacturingStep[] = [
   {
     stepNumber: '01',
-    title: 'Certified Raw Wood Sourcing & Sorting',
+    title: 'Raw Wood Sourcing & Sorting',
     shortDesc: 'Inspection of dense, legally harvested plantation logs and clean hardwood timber.',
-    detailedDesc: 'All incoming timber is verified against forestry permits and FSC® Chain-of-Custody compliance. Logs are sorted by species (Mangrove, Acacia, Khaya, Eucalyptus), debarked when necessary, and seasoned to an optimal preliminary moisture content (under 25%) before entering kilns.',
+    detailedDesc: 'We carefully source dense, legally harvested plantation logs and premium hardwood timber, ensuring consistent quality and durability. Each log undergoes thorough inspection and sorting to meet industry standards and support reliable, sustainable wood production.',
     duration: 'Seasoning: 3–4 Weeks',
     qualityStandard: '100% Legal Concessions, Zero Chemical Contaminants',
     iconName: 'TreeDeciduous',
@@ -62,9 +62,9 @@ export const MANUFACTURING_STEPS: ManufacturingStep[] = [
   },
   {
     stepNumber: '06',
-    title: 'OEM Packaging, Palletizing & Maritime Export',
-    shortDesc: 'Custom private-label box packing, shrink-wrapping, and UN 1361 container stuffing.',
-    detailedDesc: 'Charcoal is packaged into 5-ply heavy-duty export carton boxes or reinforced woven PP bags according to buyer specifications. Pallets are strapped, corner-protected, and loaded into 20ft or 40ft High Cube ocean containers at clean maritime loading docks with full DG transport documentation.',
+    title: 'Packaging & Domestic Export',
+    shortDesc: 'Secure packaging, careful palletizing, and reliable transportation across India.',
+    detailedDesc: 'Products are packed in durable cartons or bags, securely palletized, and carefully loaded for safe transportation. Our packaging and logistics processes ensure product protection, efficient handling, and reliable delivery to destinations across India.',
     duration: 'Packing: 1–2 Days',
     qualityStandard: 'UN 1361 Class 4.2 Dangerous Goods Stamping',
     iconName: 'PackageCheck',

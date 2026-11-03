@@ -20,7 +20,7 @@ export const PrivacyPolicyPage: React.FC = () => {
               Privacy Policy & Commercial Data Protection
             </h1>
             <p style={{ color: 'var(--color-gray-400)', fontSize: '0.95rem' }}>
-              Effective Date: January 1, 2026 • Governed by International Commercial Confidentiality Standards
+              Effective Date: January 1, 2026 • Governed by Indian Commercial Confidentiality Standards
             </p>
           </div>
         </div>
@@ -34,7 +34,7 @@ export const PrivacyPolicyPage: React.FC = () => {
                 1. Commitment to Commercial Confidentiality
               </h2>
               <p>
-                At {BRAND_CONFIG.companyName}, we recognize that international trade data, including buyer company names, destination seaports, private label packaging artworks, and target container volumes, constitute proprietary commercial secrets. We are strictly committed to safeguarding the confidentiality of all information submitted through our RFQ workflows, email correspondence, and trade contracts.
+                At {BRAND_CONFIG.companyName}, we recognize that Indian trade data, including buyer company names, destination seaports, private label packaging artworks, and target container volumes, constitute proprietary commercial secrets. We are strictly committed to safeguarding the confidentiality of all information submitted through our RFQ workflows, email correspondence, and trade contracts.
               </p>
             </div>
 
@@ -63,8 +63,8 @@ export const PrivacyPolicyPage: React.FC = () => {
               <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <li>Prepare and calculate formal proforma quotations and maritime freight logistics costs.</li>
                 <li>Coordinate ocean shipping space with container lines and issue maritime bills of lading.</li>
-                <li>Deliver physical laboratory sample parcels via international couriers (DHL / FedEx).</li>
-                <li>Comply with export customs, phytosanitary quarantine, and international banking regulations.</li>
+                <li>Deliver physical laboratory sample parcels via Indian couriers (DHL / FedEx).</li>
+                <li>Comply with export customs, phytosanitary quarantine, and Indian banking regulations.</li>
               </ul>
             </div>
 

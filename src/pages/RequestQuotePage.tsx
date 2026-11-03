@@ -209,7 +209,7 @@ export const RequestQuotePage: React.FC = () => {
                   </li>
                   <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <CheckCircle2 size={16} style={{ color: 'var(--color-success)', flexShrink: 0 }} />
-                    <span>Certified UN 1361 Class 4.2 Non-Self-Heating reports</span>
+                    <span>UN 1361 Class 4.2 Non-Self-Heating reports</span>
                   </li>
                   <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <CheckCircle2 size={16} style={{ color: 'var(--color-success)', flexShrink: 0 }} />

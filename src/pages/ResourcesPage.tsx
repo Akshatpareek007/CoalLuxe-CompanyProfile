@@ -25,7 +25,7 @@ export const ResourcesPage: React.FC = () => {
               Charcoal Industry Insights & Technical Guides
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'var(--color-gray-300)', lineHeight: 1.6 }}>
-              In-depth analysis for international importers, restaurant groups, and procurement directors. Explore thermal performance benchmarks, Dangerous Goods ocean shipping standards, and fuel selection guides.
+              In-depth analysis for Indian importers, restaurant groups, and procurement directors. Explore thermal performance benchmarks, Dangerous Goods ocean shipping standards, and fuel selection guides.
             </p>
           </div>
         </div>
@@ -129,9 +129,50 @@ export const ResourcesPage: React.FC = () => {
             <p style={{ color: 'var(--color-gray-300)', maxWidth: '650px', margin: '0 auto 1.5rem', fontSize: '0.95rem', lineHeight: 1.6 }}>
               Our engineering and export logistics specialists are available to review your target country's import duties, phytosanitary requirements, or custom moisture specifications.
             </p>
-            <Link to="/contact" className="btn btn-primary">
-              Consult Our Technical Advisory Team <ArrowRight size={16} />
-            </Link>
+            <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a 
+                href="https://www.amazon.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#FF9900',
+                  color: '#000000',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.93 17.09c-.18.23-.46.35-.77.35-.31 0-.59-.12-.77-.35-.18-.23-.18-.54 0-.77.18-.23.46-.35.77-.35.31 0 .59.12.77.35.18.23.18.54 0 .77z"/>
+                  <path d="M18.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                </svg>
+                Shop on Amazon
+              </a>
+              <a 
+                href="https://www.flipkart.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#2874F0',
+                  color: '#FFFFFF',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                Shop on Flipkart
+              </a>
+            </div>
           </div>
         </div>
       </section>

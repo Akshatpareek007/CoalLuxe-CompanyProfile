@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { PRODUCTS_DATA } from '../data/productsData';
-import Breadcrumbs from '../components/Breadcrumbs';
-import { QuoteForm } from '../components/QuoteForm';
+
 import { Lightbox } from '../components/Lightbox';
 import { ProductCard } from '../components/ProductCard';
 import { 
@@ -32,37 +31,6 @@ export const ProductDetailPage: React.FC = () => {
 
   return (
     <div className="product-detail-page">
-      {/* Top Breadcrumb & Title Section */}
-      <section style={{ 
-        backgroundColor: 'var(--color-carbon-900)', 
-        borderBottom: '1px solid var(--color-carbon-700)',
-        padding: '2.5rem 0 2rem' 
-      }}>
-        <div className="container">
-          <Breadcrumbs 
-            items={[
-              { label: 'Products', path: '/products' },
-              { label: product.name }
-            ]} 
-          />
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center', marginTop: '1rem', marginBottom: '0.75rem' }}>
-            <span className="badge badge-accent">{product.categoryLabel}</span>
-            <span className="badge badge-dark">MOQ: {product.moq.split('(')[0]}</span>
-            <span style={{ fontSize: '0.8rem', color: 'var(--color-success)', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', fontWeight: 600 }}>
-              <CheckCircle2 size={14} /> Ready for Ocean Dispatch
-            </span>
-          </div>
-
-          <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', lineHeight: 1.2, marginBottom: '0.75rem' }}>
-            {product.name}
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: 'var(--color-accent-light)', maxWidth: '850px', lineHeight: 1.5 }}>
-            {product.tagline}
-          </p>
-        </div>
-      </section>
-
       {/* Main Details Grid: Gallery & Technical Highlights */}
       <section style={{ padding: '3.5rem 0 4rem', backgroundColor: 'var(--color-carbon-950)' }}>
         <div className="container">
@@ -188,6 +156,11 @@ export const ProductDetailPage: React.FC = () => {
 
             {/* Right: Product Narrative, Key Features & Quick Actions */}
             <div>
+              {/* Product Name */}
+              <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', lineHeight: 1.2, marginBottom: '1.25rem', color: '#FFFFFF' }}>
+                {product.name}
+              </h1>
+              
               <div style={{ marginBottom: '1.75rem' }}>
                 <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#FFFFFF' }}>
                   Product Overview
@@ -238,9 +211,6 @@ export const ProductDetailPage: React.FC = () => {
 
               {/* CTA Row */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-                <a href="#quote-section" className="btn btn-primary btn-lg">
-                  Request for Order/Supply <ArrowRight size={18} />
-                </a>
                 <Link to="/packaging-export" className="btn btn-secondary btn-lg">
                   <Package size={18} /> Packaging Specs
                 </Link>
@@ -260,7 +230,7 @@ export const ProductDetailPage: React.FC = () => {
             }}>
               <div>
                 <h2 style={{ fontSize: '1.6rem', color: '#FFFFFF', margin: 0 }}>
-                  Certified Technical Specifications
+                  Technical Specifications
                 </h2>
                 <p style={{ color: 'var(--color-gray-400)', fontSize: '0.875rem', margin: '0.25rem 0 0' }}>
                   Laboratory verified metrics based on ASTM / ISO test standards.
@@ -343,26 +313,73 @@ export const ProductDetailPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Embedded Quotation Workflow */}
-          <div id="quote-section" style={{
+          {/* Shop Online Section */}
+          <div id="shop-section" style={{
             backgroundColor: 'var(--color-carbon-900)',
             border: '1px solid var(--color-carbon-700)',
             borderRadius: 'var(--radius-lg)',
             padding: '2.5rem 2rem',
             marginBottom: '5rem'
           }}>
-            <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', marginBottom: '2.5rem' }}>
-              <span className="badge badge-accent" style={{ marginBottom: '0.75rem' }}>B2B Commercial RFQ</span>
+            <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', marginBottom: '2rem' }}>
+              <span className="badge badge-accent" style={{ marginBottom: '0.75rem' }}>Online Store</span>
               <h2 style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.25rem)', color: '#FFFFFF', marginBottom: '0.75rem' }}>
-                Request Official Quotation for {product.name}
+                Buy {product.name} Online
               </h2>
               <p style={{ color: 'var(--color-gray-300)', fontSize: '1rem', lineHeight: 1.6 }}>
-                Submit container requirements, destination seaport, and packaging specifications. Our commercial export department typically responds with formal CIF / FOB proforma quotation within 12 business hours.
+                Purchase our premium charcoal products directly from Amazon or Flipkart. Fast delivery across India.
               </p>
             </div>
 
-            <div style={{ maxWidth: '850px', margin: '0 auto' }}>
-              <QuoteForm preselectedProduct={product.name} />
+            <div style={{ maxWidth: '500px', margin: '0 auto', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+              <a 
+                href="https://www.amazon.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#FF9900',
+                  color: '#000000',
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  padding: '1rem 2rem',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  borderRadius: 'var(--radius-md)'
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.93 17.09c-.18.23-.46.35-.77.35-.31 0-.59-.12-.77-.35-.18-.23-.18-.54 0-.77.18-.23.46-.35.77-.35.31 0 .59.12.77.35.18.23.18.54 0 .77z"/>
+                  <path d="M18.5 17.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5.22-.5.5-.5.5.22.5.5z"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                </svg>
+                Shop on Amazon
+              </a>
+              <a 
+                href="https://www.flipkart.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ 
+                  backgroundColor: '#2874F0',
+                  color: '#FFFFFF',
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  padding: '1rem 2rem',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  borderRadius: 'var(--radius-md)'
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                Shop on Flipkart
+              </a>
             </div>
           </div>
 
