@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { ARTICLES_DATA } from '../data/articlesData';
 import { Clock, Calendar, ArrowRight } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const ResourcesPage: React.FC = () => {
   return (
     <div className="resources-page">
+      <SEO
+        title="Industry Insights, Technical Guides & Knowledge Hub | CoalLuxe"
+        description="Technical guides, buyer procurement benchmarks, thermal comparison analyses, and Dangerous Goods shipping standards from CoalLuxe fuel experts."
+        keywords="charcoal technical guides, B2B procurement guide, sawdust vs coconut charcoal, dangerous goods shipping, charcoal thermal output"
+      />
       {/* Page Header */}
       <section style={{ 
         backgroundColor: 'var(--color-carbon-900)', 

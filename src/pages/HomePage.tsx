@@ -9,6 +9,7 @@ import { FAQ_DATA } from '../data/faqData';
 import { Lightbox } from '../components/Lightbox';
 import { AnimatedCounter } from '../components/animations/AnimatedCounter';
 import { TextReveal, StaggerContainer, StaggerItem, Floating } from '../components/animations';
+import { SEO } from '../components/SEO';
 import { 
   Flame, 
   ShieldCheck, 
@@ -38,6 +39,12 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
+      <SEO
+        title="CoalLuxe | Premium Charcoal Manufacturer & Bulk Supplier in India"
+        description="Direct manufacturer and pan-India bulk supplier of premium wood charcoal, lumpwood, sawdust briquettes, and coconut charcoal for commercial & industrial use."
+        keywords="charcoal manufacturer India, bulk charcoal supplier, wood charcoal manufacturer, lumpwood charcoal, sawdust briquettes India, restaurant charcoal supplier, industrial charcoal"
+        image="/images/hero_bg.jpg"
+      />
       {/* SECTION 2: HERO BANNER */}
       <section 
         className="hero-section"

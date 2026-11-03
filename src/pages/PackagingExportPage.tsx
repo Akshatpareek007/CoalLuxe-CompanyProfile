@@ -11,10 +11,17 @@ import {
   Box
 } from 'lucide-react';
 import { BRAND_CONFIG } from '../config/brandConfig';
+import { SEO } from '../components/SEO';
 
 export const PackagingExportPage: React.FC = () => {
   return (
     <div className="packaging-export-page">
+      <SEO
+        title="Packaging, Palletizing & Logistics | CoalLuxe Delivery Network"
+        description="Custom OEM kraft bags, heavy-duty PP woven sacks, stretch-wrapped palletizing, and nationwide freight logistics for reliable bulk supply across India."
+        keywords="charcoal packaging, private label charcoal, bulk freight logistics, palletized shipping, truckload charcoal delivery India"
+        image="/images/packaging_pallet.jpg"
+      />
       {/* Page Header */}
       <section style={{ 
         backgroundColor: 'var(--color-carbon-900)', 

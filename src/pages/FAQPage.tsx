@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { FAQ_DATA } from '../data/faqData';
 import { ChevronDown, Search, HelpCircle, MessageSquare, X } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const FAQPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -34,6 +35,11 @@ export const FAQPage: React.FC = () => {
 
   return (
     <div className="faq-page">
+      <SEO
+        title="Frequently Asked Questions (FAQ) | CoalLuxe Charcoal Supply"
+        description="Find answers to common questions about minimum order quantities (MOQ), nationwide shipping times, custom packaging, lab reports, and payment terms."
+        keywords="charcoal FAQ, bulk charcoal order questions, charcoal MOQ India, private label packaging FAQ"
+      />
       {/* Filter and Accordions */}
       <section style={{ padding: '3.5rem 0 5rem', backgroundColor: 'var(--color-carbon-950)' }}>
         <div className="container" style={{ maxWidth: '900px' }}>

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { GALLERY_DATA, GALLERY_CATEGORIES } from '../data/galleryData';
 import { Lightbox } from '../components/Lightbox';
 import { Maximize2 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const GalleryPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -16,6 +17,11 @@ export const GalleryPage: React.FC = () => {
 
   return (
     <div className="gallery-page">
+      <SEO
+        title="Production & Facility Gallery | CoalLuxe Charcoal Works"
+        description="Visual showcase of our manufacturing facilities, kiln yards, sorting lines, laboratory testing, and packaged consignments dispatched across India."
+        keywords="charcoal factory photos, kiln yard gallery, industrial charcoal production photos, CoalLuxe facility"
+      />
       {/* Gallery Filter & Grid Section */}
       <section style={{ padding: '3.5rem 0 5rem', backgroundColor: 'var(--color-carbon-950)' }}>
         <div className="container">

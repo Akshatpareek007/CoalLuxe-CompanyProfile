@@ -6,10 +6,17 @@ import {
   Clock, 
   Factory
 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const ManufacturingPage: React.FC = () => {
   return (
     <div className="manufacturing-page">
+      <SEO
+        title="Manufacturing Process & Kiln Technology | CoalLuxe Production"
+        description="Explore CoalLuxe's controlled carbonization process, brick dome kilns, binder formulation, and strict moisture control ensuring consistent charcoal quality."
+        keywords="charcoal manufacturing process, pyrolysis kilns, charcoal extrusion, industrial briquette production, carbonization technology India"
+        image="/images/factory_kilns.jpg"
+      />
       {/* Industrial Facilities Overview Metrics */}
       <section style={{ 
         backgroundColor: 'var(--color-carbon-850)', 

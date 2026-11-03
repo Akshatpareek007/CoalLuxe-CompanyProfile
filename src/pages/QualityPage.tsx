@@ -6,11 +6,18 @@ import {
   FileCheck, 
   AlertTriangle
 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const QualityPage: React.FC = () => {
 
   return (
     <div className="quality-page">
+      <SEO
+        title="Quality Assurance & Lab Testing Standards | CoalLuxe Standards"
+        description="Rigorous lab testing for fixed carbon content (>75%), ultra-low ash (<3%), zero spark combustion, and UN 1361 Class 4.2 compliance across all batches."
+        keywords="charcoal quality control, ASTM charcoal standards, fixed carbon testing, low ash charcoal, UN 1361 safety testing India"
+        image="/images/quality_lab.jpg"
+      />
       {/* Page Header */}
       <section style={{ 
         backgroundColor: 'var(--color-carbon-900)', 

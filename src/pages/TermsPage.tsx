@@ -1,11 +1,17 @@
 import React from 'react';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { BRAND_CONFIG } from '../config/brandConfig';
+import { SEO } from '../components/SEO';
 
 
 export const TermsPage: React.FC = () => {
   return (
     <div className="terms-page">
+      <SEO
+        title="Terms of Sale & Supply Conditions | CoalLuxe Commercial Sales"
+        description="Review standard terms of sale, supply agreements, payment terms, and delivery schedules for CoalLuxe commercial charcoal orders across India."
+        keywords="charcoal terms of sale, supply contract terms, commercial conditions, payment terms India"
+      />
       <section style={{ 
         backgroundColor: 'var(--color-carbon-900)', 
         borderBottom: '1px solid var(--color-carbon-700)',

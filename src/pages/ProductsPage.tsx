@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '../data/productsData';
 import { ProductCard } from '../components/ProductCard';
+import { SEO } from '../components/SEO';
 import { Search, ShieldCheck, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const ProductsPage: React.FC = () => {
@@ -143,6 +144,11 @@ export const ProductsPage: React.FC = () => {
 
   return (
     <div className="products-page">
+      <SEO
+        title="Charcoal Products & Bulk Catalog | CoalLuxe Supply India"
+        description="Explore CoalLuxe's complete range of high-grade charcoal: hookah shisha cubes, sawdust hexagonal briquettes, coconut shell charcoal, tandoor lumpwood, and biochar."
+        keywords="charcoal products, bulk charcoal catalog, coconut charcoal, sawdust briquettes, restaurant lump charcoal, shisha charcoal India"
+      />
       {/* Catalogue Filter & Search Bar */}
       <section style={{ 
         backgroundColor: 'var(--color-carbon-850)', 

@@ -4,6 +4,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import { ARTICLES_DATA } from '../data/articlesData';
 import { PRODUCTS_DATA } from '../data/productsData';
 import { Calendar, Clock, User, ArrowLeft, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const ArticleDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -19,6 +20,13 @@ export const ArticleDetailPage: React.FC = () => {
 
   return (
     <div className="article-detail-page">
+      <SEO
+        title={`${article.title} | CoalLuxe Knowledge Hub`}
+        description={article.excerpt}
+        keywords={`${article.category}, charcoal technical guide, ${article.title}, bulk charcoal supply`}
+        image={article.image}
+        type="article"
+      />
       {/* Header & Meta */}
       <section style={{ 
         backgroundColor: 'var(--color-carbon-900)', 

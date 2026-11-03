@@ -7,6 +7,7 @@ import {
   Clock, 
   CheckCircle2
 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const RequestQuotePage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -14,6 +15,11 @@ export const RequestQuotePage: React.FC = () => {
 
   return (
     <div className="request-quote-page">
+      <SEO
+        title="Request for Order & Supply Quotation | CoalLuxe Bulk Sales"
+        description="Submit your commercial specifications for bulk wood charcoal, briquettes, or biochar. Receive a comprehensive proforma quotation within 12 hours."
+        keywords="request charcoal quote, bulk charcoal pricing, charcoal supply RFQ, commercial proforma invoice India"
+      />
       {/* Page Header */}
       <section style={{ 
         backgroundColor: 'var(--color-carbon-900)', 

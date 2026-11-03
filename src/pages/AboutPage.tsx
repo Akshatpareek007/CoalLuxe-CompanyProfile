@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { brandConfig } from '../config/brandConfig';
 import { FadeIn } from '../components/animations/FadeIn';
 import { StaggerContainer, StaggerItem } from '../components/animations/StaggerContainer';
+import { SEO } from '../components/SEO';
 import { 
   Award, 
   Flame, 
@@ -32,6 +33,11 @@ export const AboutPage: React.FC = () => {
 
   return (
     <div style={{ paddingTop: '2.5rem', paddingBottom: '5rem' }}>
+      <SEO
+        title="About Us | CoalLuxe - Charcoal Manufacturing, Kiln Network & Vision"
+        description="Discover CoalLuxe's mission, advanced masonry kiln network, sustainable timber sourcing, and reliable bulk supply chain serving commercial buyers across India."
+        keywords="about CoalLuxe, charcoal company profile, sustainable charcoal manufacturing, kiln network India, industrial charcoal production"
+      />
       <div className="container">
         {/* Company Profile Section */}
         <section style={{ marginBottom: '5rem' }}>

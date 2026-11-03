@@ -11,6 +11,7 @@ import {
   Factory,
   MessageCircle
 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const ContactPage: React.FC = () => {
   const whatsappUrl = `https://wa.me/${BRAND_CONFIG.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello CoalLuxe Commercial Desk, I would like to inquire about container export pricing.')}`;
@@ -19,6 +20,11 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="contact-page">
+      <SEO
+        title="Contact Us & Commercial Sales Desk | CoalLuxe India"
+        description="Connect with CoalLuxe sales and engineering specialists. Request commercial quotations, schedule plant visits, or inquire about bulk truckload supplies."
+        keywords="contact CoalLuxe, charcoal supplier phone number, bulk order inquiry, Indore charcoal office, commercial sales desk"
+      />
       {/* Main Content: Info Cards & Form */}
       <section style={{ padding: '4rem 0 5rem', backgroundColor: 'var(--color-carbon-950)' }}>
         <div className="container">

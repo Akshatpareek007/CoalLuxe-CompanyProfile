@@ -1,11 +1,17 @@
 import React from 'react';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { BRAND_CONFIG } from '../config/brandConfig';
+import { SEO } from '../components/SEO';
 
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (
     <div className="privacy-policy-page">
+      <SEO
+        title="Privacy Policy & Commercial Confidentiality | CoalLuxe"
+        description="Learn how CoalLuxe protects corporate client information, procurement specifications, and trade data under Indian commercial privacy standards."
+        keywords="CoalLuxe privacy policy, trade confidentiality, commercial buyer data protection"
+      />
       <section style={{ 
         backgroundColor: 'var(--color-carbon-900)', 
         borderBottom: '1px solid var(--color-carbon-700)',

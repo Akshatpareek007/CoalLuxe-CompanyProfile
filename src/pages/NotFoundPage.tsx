@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Flame, Home, Search } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const NotFoundPage: React.FC = () => {
   return (
@@ -12,6 +13,11 @@ export const NotFoundPage: React.FC = () => {
       backgroundColor: 'var(--color-carbon-950)',
       padding: '4rem 1.5rem'
     }}>
+      <SEO
+        title="Page Not Found (404) | CoalLuxe Charcoal"
+        description="The page you requested could not be found. Return to the CoalLuxe homepage to explore our commercial charcoal products, manufacturing, and supply services."
+        noindex={true}
+      />
       <div style={{
         maxWidth: '600px',
         width: '100%',

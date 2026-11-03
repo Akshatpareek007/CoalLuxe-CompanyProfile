@@ -4,6 +4,7 @@ import { PRODUCTS_DATA } from '../data/productsData';
 
 import { Lightbox } from '../components/Lightbox';
 import { ProductCard } from '../components/ProductCard';
+import { SEO } from '../components/SEO';
 import { 
   ShieldCheck, 
   Package, 
@@ -31,6 +32,13 @@ export const ProductDetailPage: React.FC = () => {
 
   return (
     <div className="product-detail-page">
+      <SEO
+        title={`${product.name} | CoalLuxe Charcoal Supply`}
+        description={`${product.tagline}. Direct manufacturer supply across India: ${product.description.slice(0, 120)}...`}
+        keywords={`${product.name}, ${product.categoryLabel}, bulk ${product.name}, charcoal specifications, commercial supply India`}
+        image={product.image}
+        type="product"
+      />
       {/* Main Details Grid: Gallery & Technical Highlights */}
       <section style={{ padding: '3.5rem 0 4rem', backgroundColor: 'var(--color-carbon-950)' }}>
         <div className="container">
